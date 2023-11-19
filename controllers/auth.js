@@ -1,9 +1,9 @@
 const axios = require("axios");
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const API_KEY = '-------------';
+const API_KEY = '****************';
 const SteamStrategy = require('passport-steam').Strategy;
-const TOKEN = '-------------';
+const TOKEN = '***************************';
 
 passport.use(
   new SteamStrategy({
@@ -48,7 +48,7 @@ exports.ValidateSteam = async (req, res) => {
     const token = jwt.sign(
       { steamID: response.data.response.players[0].steamid },
       TOKEN,
-      { expiresIn: '24h' }
+      { noTimestamp: true, expiresIn: '1h'}
     );
 
     const data = {
